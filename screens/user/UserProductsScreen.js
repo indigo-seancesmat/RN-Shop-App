@@ -1,5 +1,13 @@
 import React from "react";
-import { Platform, FlatList, Button, Alert } from "react-native";
+import {
+  Platform,
+  FlatList,
+  Button,
+  Alert,
+  View,
+  Text,
+  StyleSheet
+} from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../../components/ui/HeaderButton";
@@ -31,6 +39,14 @@ const UserProductsScreen = props => {
     ]);
   };
 
+  if (userProducts.length === 0) {
+    return (
+      <View style={styles.fallback}>
+        <Text>No products found, maybe start creating some?</Text>
+      </View>
+    );
+  }
+
   return (
     <FlatList
       data={userProducts}
@@ -45,14 +61,14 @@ const UserProductsScreen = props => {
           }}
         >
           <Button
-            color={Colors.primary}
+            color={Colors.accent}
             title="Edit"
             onPress={() => {
               editProductHandler(itemData.item.id);
             }}
           />
           <Button
-            color={Colors.primary}
+            color={Colors.accent}
             title="Delete"
             onPress={deleteHandler.bind(this, itemData.item.id)}
           />
@@ -89,5 +105,13 @@ UserProductsScreen.navigationOptions = navData => {
     )
   };
 };
+
+const styles = StyleSheet.create({
+  fallback: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  }
+});
 
 export default UserProductsScreen;

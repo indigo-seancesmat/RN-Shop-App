@@ -5,7 +5,8 @@ import {
   FlatList,
   Button,
   StyleSheet,
-  ActivityIndicator
+  ActivityIndicator,
+  Platform
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -84,7 +85,11 @@ const CartScreen = props => {
 };
 
 CartScreen.navigationOptions = {
-  headerTitle: "Your Cart"
+  headerTitle: "Your Cart",
+  headerTintColor: Platform.OS === "android" ? "#fff" : Colors.primary,
+  headerTitleStyle: {
+    color: Platform.OS === "android" ? "#fff" : Colors.accent
+  }
 };
 
 const styles = StyleSheet.create({

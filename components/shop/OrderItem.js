@@ -7,7 +7,6 @@ import Colors from "../../constants/Colors";
 
 const OrderItem = props => {
   const [showDetails, setShowDetails] = useState(false);
-
   return (
     <Card style={styles.orderItem}>
       <View style={styles.summary}>
@@ -23,12 +22,12 @@ const OrderItem = props => {
       />
       {showDetails && (
         <View style={styles.detailItems}>
-          {props.items.map(cardItem => (
+          {props.items.map(cartItem => (
             <CartItem
-              key={cardItem.productId}
-              title={cardItem.productTitle}
-              amount={cardItem.sum}
-              quantity={cardItem.quantity}
+              key={cartItem.productId}
+              title={cartItem.productTitle}
+              amount={cartItem.sum}
+              quantity={cartItem.quantity}
             />
           ))}
         </View>

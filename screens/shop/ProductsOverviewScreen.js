@@ -100,14 +100,14 @@ const ProductsOverviewScreen = props => {
           }}
         >
           <Button
-            color={Colors.primary}
+            color={Colors.accent}
             title="View Details"
             onPress={() => {
               selectItemHandler(itemData.item.id, itemData.item.title);
             }}
           />
           <Button
-            color={Colors.primary}
+            color={Colors.accent}
             title="Add To Cart"
             onPress={() => {
               dispatch(cartActions.addToCart(itemData.item));
